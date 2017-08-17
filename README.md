@@ -4,7 +4,7 @@ MaraTrackSDK 是基于定位开发的快速集成的跑步功能，包含有定�
 
 ## SDK结构
 ### 整体结构
-#### MaraTrackSDK
+#### MaraTrackSDK（单例）
 向马拉马拉注册第三方应用
 #### MaraTrackManager
 对Engine进行生命周期管理和初始化。
@@ -24,15 +24,14 @@ MaraTrackSDK 是基于定位开发的快速集成的跑步功能，包含有定�
 - 需要开启运动与健身权限
 
 (1)
-
-![]	(image/mara-track-sdk-img1.png)
+![](image/mara-track-sdk-img1.png)
 
 (2)
-![]	(image/mara-track-sdk-img2.png)
+![](image/mara-track-sdk-img2.png)
 
 ### 集成SDK
 在项目中引入`MaraTrackSDK`，步骤如图所示：
-![]	(image/mara-track-sdk-img4.png)
+![](image/mara-track-sdk-img4.png)
 
 在使用跑步功能的类中引入框架头文件，初始化`MaraTrackerConfig `，`MaraTrackManager `，代理是可选类型（非跑步页面只用来检测跑步状态时，代理设置为空）
 
@@ -46,7 +45,7 @@ MaraTrackManager *manager = [[MaraTrackManager alloc] initWith:config delegate:n
 ```
 ### KEY的保存和认证
 
->TODO
+>本库的使用者首先需要将自己App的BundleID提供给马拉技术人员，以取得认证用的userKey。通过MaraTrackSDK的registerApp方法，进行身份验证，验证结果通过Block返回。如果在未通过身份验证的情况下进行函数调用，接口返回错误。
 
 ### 配置文件
 `MaraTrackerConfig`封装引擎初始化和配置需要的一些选项，包括：
