@@ -35,9 +35,7 @@ MaraTrackSDK 是基于定位开发的快速集成的跑步功能，包含有定�
 
 在使用跑步功能的类中引入框架头文件，初始化`MaraTrackerConfig `，`MaraTrackManager `，代理是可选类型（非跑步页面只用来检测跑步状态时，代理设置为空）
 
-```object-c
-Objective-C:
-
+```objective-c
 #import <MaraTrackSDK/MaraTrackSDK.h>
 
 MaraTrackerConfig *config = [[MaraTrackerConfig alloc] init];
