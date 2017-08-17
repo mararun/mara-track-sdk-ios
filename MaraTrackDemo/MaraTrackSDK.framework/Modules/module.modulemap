@@ -1,0 +1,6 @@
+framework module MaraTrackSDK {
+  umbrella header "MaraTrackSDK.h"
+
+  export *
+  module * { export * }
+}
