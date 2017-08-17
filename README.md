@@ -63,7 +63,7 @@ Engine的状态转换如下图所示：
 
 利用上图所示的下列方法对Engine跑步状态进行控制：
 
-``` object-c
+```objective-c
 /**
  开始跑步
  */
@@ -90,32 +90,32 @@ Engine的状态转换如下图所示：
 
  1. 相关的状态会在更改后进行回调并且也以1秒时间间隔刷新状态并回调(自动暂停和自动恢复)
  
- ```object-c
+ ```objective-c
  - (void)maraTrackManager:(MaraTrackManager *)manager didUpdateStatus:(TrackerStatus)status;
  ```
 
  2. 数据则以1秒的间隔进行回调
  
- ```object-c
+ ```objective-c
  - (void)maraTrackManager:(MaraTrackManager *)manager didUpdateData:(TrackTask *)task
  ```
  
  3. 定位点有更新立即回调
   
- ```object-c
+ ```objective-c
  - (void)maraTrackManager:(MaraTrackManager *)manager didUpdateLocation:(MaraUserLocation *)location
  ```
  
  4. 如果开启`MaraTrackerConfig.enableHA`高可靠机制
   
- ```object-c
+ ```objective-c
  - (void)maraTrackManager:(MaraTrackManager *)manager restoreInterruptData:(NSString *)json
  ```
  
 ### 数据获取
 利用下列接口同步获取跑步相关数据：
 
-```object-c
+```objective-c
 /**
  * 获取当前跑步距离
  * @return 距离，单位米
