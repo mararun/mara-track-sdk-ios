@@ -9,6 +9,8 @@
 import UIKit
 import MaraTrackSDK
 
+let kAppKey = "0YZUdPpywBZCQox78ybkQPjJzPqibaN8UT6lj9TjtCbuIrE6LupbJhWbeLoONFml"
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -19,13 +21,17 @@ class ViewController: UIViewController {
     }
 
     private func checkTrackStatus() {
-        let config = MaraTrackerConfig()
-        let manager = MaraTrackManager(config, delegate: nil)
-        let status = manager.getRunStatus()
-        if status != .error && status != .notRun {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let runVC = sb.instantiateViewController(withIdentifier: "RunVC")
-            self.navigationController?.pushViewController(runVC, animated: true)
+        MaraTrackSDK.shared().registerApp(kAppKey) { result in
+            if result == .onlineSuccess {
+                let config = MaraTrackerConfig()
+                let manager = MaraTrackManager(config, delegate: nil)
+                let status = manager.getRunStatus()
+                if status != .error && status != .notRun {
+                    let sb = UIStoryboard(name: "Main", bundle: nil)
+                    let runVC = sb.instantiateViewController(withIdentifier: "RunVC")
+                    self.navigationController?.pushViewController(runVC, animated: true)
+                }
+            }
         }
     }
 

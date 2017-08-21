@@ -100,7 +100,7 @@ Engine的状态转换如下图所示：
  - (void)maraTrackManager:(MaraTrackManager *)manager didUpdateData:(TrackTask *)task
  ```
  
- 3. 定位点有更新立即回调
+ 3. 定位点有更新立即回调(GCJ-02坐标系)
   
  ```objective-c
  - (void)maraTrackManager:(MaraTrackManager *)manager didUpdateLocation:(MaraUserLocation *)location

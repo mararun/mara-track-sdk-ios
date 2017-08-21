@@ -44,10 +44,8 @@
     // true 继续, false 暂停
     if (sender.isSelected) {
         [self.trackManager resumeRun];
-//        self.statusLabel.text = @"跑步中";
     } else {
         [self.trackManager pauseRun];
-//        self.statusLabel.text = @"手动暂停";
     }
     [sender setSelected:!sender.isSelected];
 }

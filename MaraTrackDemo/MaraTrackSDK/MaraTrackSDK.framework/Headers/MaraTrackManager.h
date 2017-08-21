@@ -24,7 +24,7 @@ MRT_START_NONNULL
 /// 监听当前跑步状态(包含自动暂停和自动恢复)
 - (void)maraTrackManager:(MaraTrackManager *)manager didUpdateStatus:(TrackerStatus)status;
 
-/// 实时更新定位坐标
+/// 实时更新定位坐标(GCJ-02坐标系)
 - (void)maraTrackManager:(MaraTrackManager *)manager didUpdateLocation:(MaraUserLocation *)location;
 
 /// 中断恢复跑步时 恢复地图路线
@@ -48,22 +48,22 @@ MRT_START_NONNULL
 /**
  开始跑步
  */
-- (void)startRun;
+- (BOOL)startRun;
 
 /**
  手动暂停跑步
  */
-- (void)pauseRun;
+- (BOOL)pauseRun;
 
 /**
  继续跑步
  */
-- (void)resumeRun;
+- (BOOL)resumeRun;
 
 /**
  结束本次跑步
  */
-- (void)stopRun;
+- (BOOL)stopRun;
 
 #pragma mark -- 数据
 

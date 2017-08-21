@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E2287FF1F43F77600402F1C /* MaraTrackSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2287FE1F43F77600402F1C /* MaraTrackSDK.framework */; };
-		4E2288001F43F77600402F1C /* MaraTrackSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2287FE1F43F77600402F1C /* MaraTrackSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4E2288011F43F78300402F1C /* MaraTrackSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2287FE1F43F77600402F1C /* MaraTrackSDK.framework */; };
-		4E2288021F43F78300402F1C /* MaraTrackSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E2287FE1F43F77600402F1C /* MaraTrackSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4EAA866C1F39821E007DE7E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA866B1F39821E007DE7E1 /* main.m */; };
 		4EAA866F1F39821E007DE7E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA866E1F39821E007DE7E1 /* AppDelegate.m */; };
 		4EAA86721F39821E007DE7E1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA86711F39821E007DE7E1 /* ViewController.m */; };
@@ -20,6 +16,10 @@
 		4EAA869A1F3996EE007DE7E1 /* RunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA86981F3996EE007DE7E1 /* RunViewController.m */; };
 		4EAA869B1F3996EE007DE7E1 /* RunViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EAA86991F3996EE007DE7E1 /* RunViewController.xib */; };
 		4EAA869F1F399E88007DE7E1 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EAA869E1F399E88007DE7E1 /* Utils.m */; };
+		4EAB56A81F4ACC6D0017A27E /* MaraTrackSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EAB56A61F4ACC640017A27E /* MaraTrackSDK.framework */; };
+		4EAB56A91F4ACC6D0017A27E /* MaraTrackSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4EAB56A61F4ACC640017A27E /* MaraTrackSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4EAB56AB1F4ACC9F0017A27E /* MaraTrackSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EAB56A61F4ACC640017A27E /* MaraTrackSDK.framework */; };
+		4EAB56AC1F4ACC9F0017A27E /* MaraTrackSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4EAB56A61F4ACC640017A27E /* MaraTrackSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4EB3EF1F1F41B8620004E4ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3EF1E1F41B8620004E4ED /* AppDelegate.swift */; };
 		4EB3EF211F41B8620004E4ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3EF201F41B8620004E4ED /* ViewController.swift */; };
 		4EB3EF241F41B8620004E4ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EB3EF221F41B8620004E4ED /* Main.storyboard */; };
@@ -36,18 +36,18 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4E2288001F43F77600402F1C /* MaraTrackSDK.framework in Embed Frameworks */,
+				4EAB56A91F4ACC6D0017A27E /* MaraTrackSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4E2288031F43F78300402F1C /* Embed Frameworks */ = {
+		4EAB56A51F4AC9E30017A27E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4E2288021F43F78300402F1C /* MaraTrackSDK.framework in Embed Frameworks */,
+				4EAB56AC1F4ACC9F0017A27E /* MaraTrackSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,7 +55,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4E2287FE1F43F77600402F1C /* MaraTrackSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MaraTrackSDK.framework; sourceTree = "<group>"; };
 		4EAA86671F39821E007DE7E1 /* MaraTrackDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaraTrackDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EAA866B1F39821E007DE7E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4EAA866D1F39821E007DE7E1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +70,7 @@
 		4EAA86991F3996EE007DE7E1 /* RunViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RunViewController.xib; sourceTree = "<group>"; };
 		4EAA869D1F399E88007DE7E1 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		4EAA869E1F399E88007DE7E1 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		4EAB56A61F4ACC640017A27E /* MaraTrackSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaraTrackSDK.framework; path = MaraTrackSDK/MaraTrackSDK.framework; sourceTree = "<group>"; };
 		4EB3EF1C1F41B8620004E4ED /* MaraTrackDemo-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MaraTrackDemo-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB3EF1E1F41B8620004E4ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EB3EF201F41B8620004E4ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E2288011F43F78300402F1C /* MaraTrackSDK.framework in Frameworks */,
+				4EAB56AB1F4ACC9F0017A27E /* MaraTrackSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E2287FF1F43F77600402F1C /* MaraTrackSDK.framework in Frameworks */,
+				4EAB56A81F4ACC6D0017A27E /* MaraTrackSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +153,7 @@
 		4EAA868F1F3982A1007DE7E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4E2287FE1F43F77600402F1C /* MaraTrackSDK.framework */,
+				4EAB56A61F4ACC640017A27E /* MaraTrackSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -183,7 +183,7 @@
 				4EAA86631F39821E007DE7E1 /* Sources */,
 				4EAA86641F39821E007DE7E1 /* Frameworks */,
 				4EAA86651F39821E007DE7E1 /* Resources */,
-				4E2288031F43F78300402F1C /* Embed Frameworks */,
+				4EAB56A51F4AC9E30017A27E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -446,7 +446,7 @@
 				DEVELOPMENT_TEAM = H3F25LDX4E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MaraTrackSDK",
 				);
 				INFOPLIST_FILE = MaraTrackDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -463,7 +463,7 @@
 				DEVELOPMENT_TEAM = H3F25LDX4E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MaraTrackSDK",
 				);
 				INFOPLIST_FILE = MaraTrackDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -478,7 +478,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H3F25LDX4E;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/MaraTrackSDK";
 				INFOPLIST_FILE = "MaraTrackDemo-swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -496,7 +496,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = H3F25LDX4E;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/MaraTrackSDK";
 				INFOPLIST_FILE = "MaraTrackDemo-swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

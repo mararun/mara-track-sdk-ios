@@ -10,7 +10,7 @@
 #import <MaraTrackSDK/MaraTrackSDK.h>
 #import "RunViewController.h"
 
-static NSString* kAppKey = @"0YZUdPpywBZCQox78ybkQPjJzPqibaN8UT6lj9TjtCbuIrE6LupbJhWbeLoONFml";
+static NSString* kAppKey = @"0YZUdPpywBZCQox78ybkQPjJzPqibaN8UT6lj9TjtCbuIrE6LupbJhWbeLoONFml1";
 
 @interface ViewController ()
 

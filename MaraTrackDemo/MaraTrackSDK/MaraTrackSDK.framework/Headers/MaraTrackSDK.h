@@ -26,6 +26,4 @@
  */
 - (void)registerApp:(NSString *)appKey block: (void (^)(SDKRegisterResult))block;
 
-- (BOOL)isVerified;
-
 @end
