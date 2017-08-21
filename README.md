@@ -67,22 +67,22 @@ Engine的状态转换如下图所示：
 /**
  开始跑步
  */
-- (void)startRun;
+- (BOOL)startRun;
 
 /**
  手动暂停跑步
  */
-- (void)pauseRun;
+- (BOOL)pauseRun;
 
 /**
  继续跑步
  */
-- (void)resumeRun;
+- (BOOL)resumeRun;
 
 /**
  结束本次跑步
  */
-- (void)stopRun;
+- (BOOL)stopRun;
 ```
 
 ### 状态和数据更新回调
