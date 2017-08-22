@@ -58,7 +58,7 @@
 @property (nonatomic) BOOL enableExceptionalPointFilter;
 
 /**
- 开始或关闭log，默认YES
+ Debug信息开关, 默认开启
  */
 @property (nonatomic) BOOL debug;
 
