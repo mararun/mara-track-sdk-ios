@@ -3,7 +3,7 @@
 //  MaraTrackDemo
 //
 //  Created by pk on 2017/8/8.
-//  Copyright © 2017年 pk. All rights reserved.
+//  Copyright © 2017年 com.maramara. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -47,7 +47,6 @@ static NSString* kAppKey = @"0YZUdPpywBZCQox78ybkQPjJzPqibaN8UT6lj9TjtCbuIrE6Lup
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
 }
 
 

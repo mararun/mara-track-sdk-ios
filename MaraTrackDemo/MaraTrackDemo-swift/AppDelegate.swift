@@ -3,7 +3,7 @@
 //  MaraTrackDemo-swift
 //
 //  Created by pk on 2017/8/14.
-//  Copyright © 2017年 pk. All rights reserved.
+//  Copyright © 2017年 com.maramara. All rights reserved.
 //
 
 import UIKit

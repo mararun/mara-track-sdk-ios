@@ -3,7 +3,7 @@
 //  MaraTrackSDK
 //
 //  Created by pk on 2017/8/2.
-//  Copyright © 2017年 pk. All rights reserved.
+//  Copyright © 2017年 com.maramara. All rights reserved.
 //
 
 #if __has_feature(nullability)
