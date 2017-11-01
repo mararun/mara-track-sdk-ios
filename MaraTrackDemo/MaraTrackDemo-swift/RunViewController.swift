@@ -19,6 +19,8 @@ class RunViewController: UIViewController {
     @IBOutlet weak var statusLabel: UILabel!
 
     fileprivate var trackManager: MaraTrackManager?
+    var locationManager: MaraLocationManager?
+    
     fileprivate var tipsTask: TrackTask? {
         didSet {
             if let task = tipsTask {
@@ -36,7 +38,7 @@ class RunViewController: UIViewController {
         let config = MaraTrackerConfig()
         config.enableHA = true
         config.enableAutoPause = true
-        self.trackManager = MaraTrackManager(config, delegate: self)
+        self.trackManager = MaraTrackManager(config, locManager: self.locationManager, delegate: self)
         self.trackManager?.startRun()
     }
 

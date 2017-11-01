@@ -11,4 +11,5 @@
 
 @interface RunViewController : UIViewController
 
+@property (nonatomic, strong) MaraLocationManager *locationManager;
 @end

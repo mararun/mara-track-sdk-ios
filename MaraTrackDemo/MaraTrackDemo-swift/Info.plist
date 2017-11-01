@@ -20,6 +20,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>使用定位服务来追踪你的跑步</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>使用定位服务来追踪你的跑步</string>
 	<key>NSMotionUsageDescription</key>

@@ -29,7 +29,7 @@
     [self.navigationController setNavigationBarHidden:YES];
 
     MaraTrackerConfig *config = [[MaraTrackerConfig alloc] init];
-    self.trackManager = [[MaraTrackManager alloc] initWith:config delegate:self];
+    self.trackManager = [[MaraTrackManager alloc] initWith:config locManager:self.locationManager delegate:self];
     [self.trackManager startRun];
 }
 

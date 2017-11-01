@@ -13,7 +13,7 @@
 static NSString* kAppKey = @"0YZUdPpywBZCQox78ybkQPjJzPqibaN8UT6lj9TjtCbuIrE6LupbJhWbeLoONFml";
 
 @interface ViewController ()
-
+@property (nonatomic, strong) MaraLocationManager *locManager;
 @end
 
 @implementation ViewController
@@ -21,6 +21,9 @@ static NSString* kAppKey = @"0YZUdPpywBZCQox78ybkQPjJzPqibaN8UT6lj9TjtCbuIrE6Lup
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    MaraLocationManager * loctionManager = [[MaraLocationManager alloc] init];
+    self.locManager = loctionManager;
+    
     [self checkTrackStatus];
 }
 
@@ -29,11 +32,14 @@ static NSString* kAppKey = @"0YZUdPpywBZCQox78ybkQPjJzPqibaN8UT6lj9TjtCbuIrE6Lup
         NSLog(@"%s %d", __func__, (int)result);
         if (result == SDKRegisterOnlineSuccess) {
             MaraTrackerConfig *config = [[MaraTrackerConfig alloc] init];
-            MaraTrackManager *manager = [[MaraTrackManager alloc] initWith:config delegate:nil];
+            MaraTrackManager *manager = [[MaraTrackManager alloc] initWith:config locManager:nil delegate:nil];
             TrackerStatus status = [manager getRunStatus];
             if (status != TrackerStatusError && status != TrackerStatusNotRun) {
                 // 恢复
+                [self.locManager startUpdatingLocation];
+                
                 RunViewController *runVC = [[RunViewController alloc] init];
+                runVC.locationManager = self.locManager;
                 [self.navigationController pushViewController:runVC animated:YES];
             }
         }
@@ -41,7 +47,10 @@ static NSString* kAppKey = @"0YZUdPpywBZCQox78ybkQPjJzPqibaN8UT6lj9TjtCbuIrE6Lup
 }
 
 - (IBAction)startRunBtnDidClicked:(id)sender {
+    [self.locManager startUpdatingLocation];
+    
     RunViewController *runVC = [[RunViewController alloc] init];
+    runVC.locationManager = self.locManager;
     [self.navigationController pushViewController:runVC animated:YES];
 }
 

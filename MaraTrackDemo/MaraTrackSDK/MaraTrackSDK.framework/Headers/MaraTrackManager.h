@@ -15,6 +15,7 @@
 MRT_START_NONNULL
 
 @class MaraTrackManager;
+@class MaraLocationManager;
 
 @protocol MaraTrackManagerDelegate <NSObject>
 @required
@@ -43,7 +44,7 @@ MRT_START_NONNULL
  @param delegate 代理
  @return 对象
  */
-- (instancetype)initWith:(MaraTrackerConfig *)config delegate:(id<MaraTrackManagerDelegate> _Nullable)delegate;
+- (instancetype)initWith:(MaraTrackerConfig *)config locManager:(MaraLocationManager * _Nullable)manager delegate:(id<MaraTrackManagerDelegate> _Nullable)delegate;
 
 /**
  开始跑步

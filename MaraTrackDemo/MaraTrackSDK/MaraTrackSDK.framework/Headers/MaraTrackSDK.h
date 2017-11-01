@@ -12,6 +12,7 @@
 #import <MaraTrackSDK/MaraUserLocation.h>
 #import <MaraTrackSDK/TrackTask.h>
 #import <MaraTrackSDK/MaraConstants.h>
+#import <MaraTrackSDK/MaraLocationManager.h>
 
 
 @interface MaraTrackSDK : NSObject
