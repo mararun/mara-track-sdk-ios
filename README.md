@@ -4,8 +4,8 @@ MaraTrackSDK 是基于定位开发的快速集成的跑步功能，包含有定�
 
 ## SDK结构
 ### 整体结构
-#### MaraTrackSDK（单例）
-向马拉马拉注册第三方应用
+#### MaraTrackAuth
+马拉授权类。向马拉马拉注册您的应用，进行在线或者离线授权。授权成功后方能使用SDK。
 #### MaraTrackManager
 对Engine进行生命周期管理和初始化。
 #### MaraTrackerConfig
@@ -24,38 +24,68 @@ MaraTrackSDK 是基于定位开发的快速集成的跑步功能，包含有定�
 - 需要开启运动与健身权限
 
 (1)
-![](image/mara-track-sdk-img1.png)
+
+![]	(image/mara-track-sdk-img1.png)
 
 (2)
-![](image/mara-track-sdk-img2.png)
+![]	(image/mara-track-sdk-img2.png)
 
-### 集成SDK
-在项目中引入`MaraTrackSDK`，步骤如图所示：
-![](image/mara-track-sdk-img4.png)
+(3)
+由于SDK中使用了扩展，所以需要在工程 - Build Settings - Other Linker Flags中增加-all_load选项。
 
-在使用跑步功能的类中引入框架头文件，初始化`MaraTrackerConfig `，`MaraTrackManager `，代理是可选类型（非跑步页面只用来检测跑步状态时，代理设置为空）
+### 申请授权
+有如下三种授权方式：
 
-```objective-c
-#import <MaraTrackSDK/MaraTrackSDK.h>
+``` object-c
 
-MaraTrackerConfig *config = [[MaraTrackerConfig alloc] init];
-MaraTrackManager *manager = [[MaraTrackManager alloc] initWith:config delegate:nil];
-```
-### KEY的保存和认证
+/**
+ 向马拉马拉注册第三方应用。首先进行在线授权，失败的情况下进行离线授权。
 
->本库的使用者首先需要将自己App的BundleID提供给马拉技术人员，以取得认证用的userKey。通过MaraTrackSDK的registerApp方法，进行身份验证，验证结果通过Block返回。如果在未通过身份验证的情况下进行函数调用，接口返回错误。
+ @param appKey Mara分配的唯一标识
+ @param deviceID 设备ID
+ @param block 回调
+ */
+- (void)registerApp: (NSString*)appKey deviceID: (NSString*)deviceID block: (void (^)(SDKRegisterResult))block;
+
+
+/**
+ 首先在线授权，失败后尝试离线授权。
+
+ @param appKey key
+ @param block 在线授权或者离线授权的回调
+ */
+- (void)onlineAuthorization: (NSString*)appKey block: (void (^)(SDKRegisterResult))block;
+
+/**
+ 首先离线授权，失败后尝试在线授权（在线授权失败后停止，不会继续离线授权）
+
+ @param appKey key
+ @param block 在线授权回调
+ @return 离线授权结果
+ */
+- (SDKRegisterResult)offlineAuthorization: (NSString*)appKey block: (void (^)(SDKRegisterResult))block;
+
+``` 
 
 ### 配置文件
 `MaraTrackerConfig`封装引擎初始化和配置需要的一些选项，包括：
 
-* `userId` 用户标识，会记录在最终的跑步详情中
+* `userID` 用户标识，会记录在最终的跑步详情中
 * `lapDistance` 每圈距离，单位米，影响`LapInfo`的计算，默认为1000
 * `environment` 跑步类型（室外跑`outdoor`、室内跑`indoor`），参看`MaraConstants.Environment `
-* `enableAutoPause`是否开启自动暂停，默认关闭
-* `enableDistanceProvision`是否启用步数补充跑步里程，默认开启
-* `enableHA`是否启用高可靠机制。启用以后引擎会在存储器保存跑步数据。app意外中断后可以恢复跑步，默认开启
-* `enableExceptionalPointFilter`是否开启飘移点过滤，默认开启
-如果希望使用自定义配置，重写MaraRunningEngineService基类的下列方法：
+* `enableAutoPause` 是否开启自动暂停，默认关闭
+* `enableDistanceProvision` 是否启用步数补充跑步里程，默认开启
+* `enableHA` 是否启用高可靠机制。启用以后引擎会在存储器保存跑步数据。app意外中断后可以恢复跑步，默认开启
+* `enableExceptionalPointFilter` 是否开启飘移点过滤，默认开启
+* `stepLength` 平均步长，单位米，默认为1
+* `debug` 调试信息开关，默认开启
+
+### 使用轨迹管理者
+``` object-c
+MaraTrackerConfig *config = [[MaraTrackerConfig alloc] init];
+    self.trackManager = [[MaraTrackManager alloc] initWith:config locManager:self.locationManager delegate:self];
+    [self.trackManager startRun];
+```
 
 ### 状态控制
 Engine的状态转换如下图所示：
@@ -63,59 +93,56 @@ Engine的状态转换如下图所示：
 
 利用上图所示的下列方法对Engine跑步状态进行控制：
 
-```objective-c
+``` object-c
+/**
+ 初始化
+ */
+- (instancetype)initWith:(MaraTrackerConfig *)config locManager:(MaraLocationManager * _Nullable)manager delegate:(id<MaraTrackManagerDelegate> _Nullable)delegate;
+
 /**
  开始跑步
+
+ @return YES：成功；NO：失败
  */
 - (BOOL)startRun;
 
 /**
  手动暂停跑步
+
+ @return YES：成功；NO：失败
  */
 - (BOOL)pauseRun;
 
 /**
  继续跑步
+
+ @return YES：成功；NO：失败
  */
 - (BOOL)resumeRun;
 
 /**
- 结束本次跑步
+ 结束跑步
+
+ @return MaraTrackErrorNoError：成功。
+ 可能的错误有：MaraTrackErrorStopRunning，MaraTrackErrorGetTrackInfo，MaraTrackErrorSaveTrack。
  */
-- (BOOL)stopRun;
+- (MaraTrackError)stopRun;
+
+/**
+ 上传单条跑步跑步记录
+
+ @param filePath 指定跑步记录的地址
+ @param bizUserID 用户业务ID
+ @return 是否正确进行了上传。NO:参数不正确或者正在上传中，此次没有发送上传请求。
+ */
+- (RecordUploadResult)uploadOneRecord: (NSString*)filePath extraData: (NSString*)extraData bizUserID: (NSString*)bizUserID;
+
 ```
-
-### 状态和数据更新回调
-操作引擎、更新数据后:
-
- 1. 相关的状态会在更改后进行回调并且也以1秒时间间隔刷新状态并回调(自动暂停和自动恢复)
- 
- ```objective-c
- - (void)maraTrackManager:(MaraTrackManager *)manager didUpdateStatus:(TrackerStatus)status;
- ```
-
- 2. 数据则以1秒的间隔进行回调
- 
- ```objective-c
- - (void)maraTrackManager:(MaraTrackManager *)manager didUpdateData:(TrackTask *)task
- ```
- 
- 3. 定位点有更新立即回调(GCJ-02坐标系)
-  
- ```objective-c
- - (void)maraTrackManager:(MaraTrackManager *)manager didUpdateLocation:(MaraUserLocation *)location
- ```
- 
- 4. 如果开启`MaraTrackerConfig.enableHA`高可靠机制
-  
- ```objective-c
- - (void)maraTrackManager:(MaraTrackManager *)manager restoreInterruptData:(NSString *)json
- ```
  
 ### 数据获取
 利用下列接口同步获取跑步相关数据：
 
-```objective-c
+```object-c
 /**
  * 获取当前跑步距离
  * @return 距离，单位米
@@ -205,6 +232,64 @@ Engine的状态转换如下图所示：
  * @return 状态
  */
 - (TrackerStatus)getRunStatus;
+
+/**
+ 每秒钟调用，传入心率
+
+ @param hr 当前秒的心率值
+ */
+- (BOOL)hrDataUpdate: (int)hr;
+```
+
+### 状态和数据更新回调
+
+@required
+
+跑步状态改变时的回调函数，时机包括：暂停跑步、恢复跑步、自动暂停、自动恢复跑步。
+```
+- (void)maraTrackManager:(MaraTrackManager *)manager didUpdateStatus:(TrackerStatus)status;
+```
+
+每秒钟的回调函数，读取engine中的实时数据。
+```
+- (void)maraTrackManager:(MaraTrackManager *)manager didUpdateData:(TrackTask *)task;
+```
+
+实时更新定位坐标(GCJ-02坐标系)
+```
+- (void)maraTrackManager:(MaraTrackManager *)manager didUpdateLocation:(MaraUserLocation *)location;
+```
+
+中断恢复跑步时 恢复地图路线
+```
+- (void)maraTrackManager:(MaraTrackManager *)manager restoreInterruptData:(NSString *)json;
+```
+
+@optional
+
+```
+/**
+ 跑步记录文件上传结果通知
+
+ @param manager 轨迹管理者
+ @param success 是否上传成功
+ @param data 服务端返回的数据
+ @param filePath 上传跑步记录文件的本地路径
+ @param statusCode 服务端返回的HTTP状态码
+ */
+
+- (void)maraTrackManager: (MaraTrackManager*)manager recordUploadResult: (BOOL)success data: (NSData*)data filePath: (NSString*)filePath code: (NSInteger)statusCode;
+
+/**
+ 错误回调
+
+ @param manager 轨迹管理者
+ @param error 错误
+ @param detail 错误详情
+ @param data 错误详情中的附加数值型信息
+ */
+
+- (void)maraTrackManager:(MaraTrackManager *)manager error:(MaraTrackError)error detail:(NSString*)detail data:(int)data;
 ```
 
 ### 跑步详情结构

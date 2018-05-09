@@ -5,12 +5,15 @@
 //  Created by pk on 2017/8/7.
 //  Copyright © 2017年 com.maramara. All rights reserved.
 //
+//  整理 Yalin 2018/05/09
 
 #import <Foundation/Foundation.h>
 #import <MaraTrackSDK/TrackTask.h>
 #import <MaraTrackSDK/MaraConstants.h>
 #import <MaraTrackSDK/MaraUserLocation.h>
 #import <MaraTrackSDK/MaraTrackerConfig.h>
+#import <MaraTrackSDK/MaraTrackError.h>
+#import <MaraTrackSDK/MaraTrackerRecordUploadManager.h>
 
 MRT_START_NONNULL
 
@@ -18,12 +21,13 @@ MRT_START_NONNULL
 @class MaraLocationManager;
 
 @protocol MaraTrackManagerDelegate <NSObject>
-@required
-/// 每1s 抓取一次engine里的数据更新
-- (void)maraTrackManager:(MaraTrackManager *)manager didUpdateData:(TrackTask *)task;
 
-/// 监听当前跑步状态(包含自动暂停和自动恢复)
+@required
+/// 跑步状态改变时的回调函数，时机包括：暂停跑步、恢复跑步、自动暂停、自动恢复跑步。
 - (void)maraTrackManager:(MaraTrackManager *)manager didUpdateStatus:(TrackerStatus)status;
+
+/// 每秒钟的回调函数，读取engine中的实时数据。
+- (void)maraTrackManager:(MaraTrackManager *)manager didUpdateData:(TrackTask *)task;
 
 /// 实时更新定位坐标(GCJ-02坐标系)
 - (void)maraTrackManager:(MaraTrackManager *)manager didUpdateLocation:(MaraUserLocation *)location;
@@ -31,16 +35,38 @@ MRT_START_NONNULL
 /// 中断恢复跑步时 恢复地图路线
 - (void)maraTrackManager:(MaraTrackManager *)manager restoreInterruptData:(NSString *)json;
 
+@optional
+/**
+ 跑步记录文件上传结果通知
+
+ @param manager 轨迹管理者
+ @param success 是否上传成功
+ @param data 服务端返回的数据
+ @param filePath 上传跑步记录文件的本地路径
+ @param statusCode 服务端返回的HTTP状态码
+ */
+- (void)maraTrackManager: (MaraTrackManager*)manager recordUploadResult: (BOOL)success data: (NSData*)data filePath: (NSString*)filePath code: (NSInteger)statusCode;
+
+/**
+ 错误回调
+
+ @param manager 轨迹管理者
+ @param error 错误
+ @param detail 错误详情
+ @param data 错误详情中的附加数值型信息
+ */
+- (void)maraTrackManager:(MaraTrackManager *)manager error:(MaraTrackError)error detail:(NSString*)detail data:(int)data;
 @end
 
 @interface MaraTrackManager : NSObject
 
 @property (nonatomic, strong, nullable) MaraUserLocation *userLocation;
 @property (nonatomic, strong, nullable) TrackTask *trackTask;
+
 /**
  初始化方法
-
  @param config 配置
+ @param manager 定位对象
  @param delegate 代理
  @return 对象
  */
@@ -48,23 +74,41 @@ MRT_START_NONNULL
 
 /**
  开始跑步
+
+ @return YES：成功；NO：失败
  */
 - (BOOL)startRun;
 
 /**
  手动暂停跑步
+
+ @return YES：成功；NO：失败
  */
 - (BOOL)pauseRun;
 
 /**
  继续跑步
+
+ @return YES：成功；NO：失败
  */
 - (BOOL)resumeRun;
 
 /**
- 结束本次跑步
+ 结束跑步
+
+ @return MaraTrackErrorNoError：成功。
+ 可能的错误有：MaraTrackErrorStopRunning，MaraTrackErrorGetTrackInfo，MaraTrackErrorSaveTrack。
  */
-- (BOOL)stopRun;
+- (MaraTrackError)stopRun;
+
+/**
+ 上传单条跑步跑步记录
+
+ @param filePath 指定跑步记录的地址
+ @param bizUserID 用户业务ID
+ @return 是否正确进行了上传。NO:参数不正确或者正在上传中，此次没有发送上传请求。
+ */
+- (RecordUploadResult)uploadOneRecord: (NSString*)filePath extraData: (NSString*)extraData bizUserID: (NSString*)bizUserID;
 
 #pragma mark -- 数据
 
@@ -157,6 +201,13 @@ MRT_START_NONNULL
  * @return 状态
  */
 - (TrackerStatus)getRunStatus;
+
+/**
+ 每秒钟调用，传入心率
+
+ @param hr 当前秒的心率值
+ */
+- (BOOL)hrDataUpdate: (int)hr;
 
 @end
 

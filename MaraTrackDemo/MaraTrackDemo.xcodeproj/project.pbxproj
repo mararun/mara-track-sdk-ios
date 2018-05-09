@@ -23,10 +23,11 @@
 		4EB3EF291F41B8620004E4ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EB3EF271F41B8620004E4ED /* LaunchScreen.storyboard */; };
 		4EB3EF341F4290990004E4ED /* RunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3EF321F4290990004E4ED /* RunViewController.swift */; };
 		4EB3EF391F429F170004E4ED /* Double+MR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB3EF381F429F170004E4ED /* Double+MR.swift */; };
-		4EF620EF1FA99F810090CBC4 /* MaraTrackSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF620ED1FA99F770090CBC4 /* MaraTrackSDK.framework */; };
-		4EF620F01FA99F810090CBC4 /* MaraTrackSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF620ED1FA99F770090CBC4 /* MaraTrackSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4EF620F11FA9A88F0090CBC4 /* MaraTrackSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF620ED1FA99F770090CBC4 /* MaraTrackSDK.framework */; };
-		4EF620F21FA9A88F0090CBC4 /* MaraTrackSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF620ED1FA99F770090CBC4 /* MaraTrackSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E00C3D6A209B13FB006387A3 /* SAMKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = E00C3D67209B13FA006387A3 /* SAMKeychain.m */; };
+		E00C3D6B209B13FB006387A3 /* SAMKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = E00C3D69209B13FA006387A3 /* SAMKeychainQuery.m */; };
+		E00C3D6D209B171C006387A3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E00C3D6C209B171C006387A3 /* Security.framework */; };
+		E075199C20A2BD7800C0D108 /* MaraTrackSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E075199B20A2BD7800C0D108 /* MaraTrackSDK.framework */; };
+		E0C208FE1FB15ED400977EBB /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E0C208FD1FB15ED300977EBB /* libstdc++.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,18 +37,16 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4EF620F01FA99F810090CBC4 /* MaraTrackSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4E2288031F43F78300402F1C /* Embed Frameworks */ = {
+		E0C208F81FB15C1900977EBB /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4EF620F21FA9A88F0090CBC4 /* MaraTrackSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,7 +78,14 @@
 		4EB3EF2A1F41B8620004E4ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EB3EF321F4290990004E4ED /* RunViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunViewController.swift; sourceTree = "<group>"; };
 		4EB3EF381F429F170004E4ED /* Double+MR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+MR.swift"; sourceTree = "<group>"; };
-		4EF620ED1FA99F770090CBC4 /* MaraTrackSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaraTrackSDK.framework; path = MaraTrackSDK/MaraTrackSDK.framework; sourceTree = "<group>"; };
+		E00C3D66209B13FA006387A3 /* SAMKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychain.h; sourceTree = "<group>"; };
+		E00C3D67209B13FA006387A3 /* SAMKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMKeychain.m; sourceTree = "<group>"; };
+		E00C3D68209B13FA006387A3 /* SAMKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAMKeychainQuery.h; sourceTree = "<group>"; };
+		E00C3D69209B13FA006387A3 /* SAMKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMKeychainQuery.m; sourceTree = "<group>"; };
+		E00C3D6C209B171C006387A3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		E075199B20A2BD7800C0D108 /* MaraTrackSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MaraTrackSDK.framework; path = MaraTrackSDK/MaraTrackSDK.framework; sourceTree = "<group>"; };
+		E0C208F91FB15DF500977EBB /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		E0C208FD1FB15ED300977EBB /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +93,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EF620F11FA9A88F0090CBC4 /* MaraTrackSDK.framework in Frameworks */,
+				E075199C20A2BD7800C0D108 /* MaraTrackSDK.framework in Frameworks */,
+				E00C3D6D209B171C006387A3 /* Security.framework in Frameworks */,
+				E0C208FE1FB15ED400977EBB /* libstdc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +103,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EF620EF1FA99F810090CBC4 /* MaraTrackSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +131,7 @@
 		4EAA86691F39821E007DE7E1 /* MaraTrackDemo */ = {
 			isa = PBXGroup;
 			children = (
+				E00C3D65209B13FA006387A3 /* SAMKeychain */,
 				4EAA866D1F39821E007DE7E1 /* AppDelegate.h */,
 				4EAA866E1F39821E007DE7E1 /* AppDelegate.m */,
 				4EAA86701F39821E007DE7E1 /* ViewController.h */,
@@ -153,7 +161,10 @@
 		4EAA868F1F3982A1007DE7E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4EF620ED1FA99F770090CBC4 /* MaraTrackSDK.framework */,
+				E075199B20A2BD7800C0D108 /* MaraTrackSDK.framework */,
+				E00C3D6C209B171C006387A3 /* Security.framework */,
+				E0C208FD1FB15ED300977EBB /* libstdc++.tbd */,
+				E0C208F91FB15DF500977EBB /* libstdc++.6.0.9.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -173,6 +184,17 @@
 			path = "MaraTrackDemo-swift";
 			sourceTree = "<group>";
 		};
+		E00C3D65209B13FA006387A3 /* SAMKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				E00C3D66209B13FA006387A3 /* SAMKeychain.h */,
+				E00C3D67209B13FA006387A3 /* SAMKeychain.m */,
+				E00C3D68209B13FA006387A3 /* SAMKeychainQuery.h */,
+				E00C3D69209B13FA006387A3 /* SAMKeychainQuery.m */,
+			);
+			path = SAMKeychain;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -183,7 +205,7 @@
 				4EAA86631F39821E007DE7E1 /* Sources */,
 				4EAA86641F39821E007DE7E1 /* Frameworks */,
 				4EAA86651F39821E007DE7E1 /* Resources */,
-				4E2288031F43F78300402F1C /* Embed Frameworks */,
+				E0C208F81FB15C1900977EBB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -293,9 +315,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EAA86721F39821E007DE7E1 /* ViewController.m in Sources */,
+				E00C3D6A209B13FB006387A3 /* SAMKeychain.m in Sources */,
 				4EAA866F1F39821E007DE7E1 /* AppDelegate.m in Sources */,
 				4EAA869A1F3996EE007DE7E1 /* RunViewController.m in Sources */,
 				4EAA869F1F399E88007DE7E1 /* Utils.m in Sources */,
+				E00C3D6B209B13FB006387A3 /* SAMKeychainQuery.m in Sources */,
 				4EAA866C1F39821E007DE7E1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,6 +475,8 @@
 				INFOPLIST_FILE = MaraTrackDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mararun.MaraTrackDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -468,6 +494,8 @@
 				INFOPLIST_FILE = MaraTrackDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mararun.MaraTrackDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

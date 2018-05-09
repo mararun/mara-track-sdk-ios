@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MaraTrackSDK/MaraTrackSDK.h>
+#import <MaraTrackSDK/MaraTrackAuth.h>
 
 @interface RunViewController : UIViewController
 

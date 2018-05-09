@@ -27,7 +27,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES];
-
     MaraTrackerConfig *config = [[MaraTrackerConfig alloc] init];
     self.trackManager = [[MaraTrackManager alloc] initWith:config locManager:self.locationManager delegate:self];
     [self.trackManager startRun];

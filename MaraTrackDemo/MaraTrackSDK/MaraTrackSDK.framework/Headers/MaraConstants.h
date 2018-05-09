@@ -33,19 +33,29 @@ typedef NS_ENUM(int32_t, TrackerStatus) {
 /// - outdoor: 户外跑
 /// - indoor: 室内跑
 typedef NS_ENUM(int32_t, Environment) {
-    EnvironmentOutdoor = 1,
-    EnvironmentIndoor  = 2,
+    EnvironmentOutdoor      = 1,
+    EnvironmentIndoor       = 2,
+    EnvironmentCrossCountry = 3,
 };
 
 /**
  sdk注册结果
 
- - SDKRegisterOnlineSuccess: 身份验证通过
- - SDKRegisterOnlineFailure: 身份验证不通过
+ - SDKRegisterSuccess: 身份验证通过
+ - SDKRegisterFailure: 身份验证不通过
  */
 typedef NS_ENUM(int32_t, SDKRegisterResult) {
-    SDKRegisterOnlineSuccess     = 0,
-    SDKRegisterOnlineFailure     = 1,
+    SDKRegisterResultSuccess     = 0,
+    SDKRegisterResultFailure     = 1,
+};
+
+typedef NS_ENUM(int32_t, RecordUploadResult) {
+    RecordUploadResultSuccess           = 0,
+    RecordUploadResultNoToken           = 1,
+    RecordUploadResultInvalidToken      = 2,
+    RecordUploadResultInUploading       = 3,
+    RecordUploadResultFilePathErr       = 4,
+    RecordUploadResultOtherErr          = 5,
 };
 
 #endif /* MaraConstants_h */

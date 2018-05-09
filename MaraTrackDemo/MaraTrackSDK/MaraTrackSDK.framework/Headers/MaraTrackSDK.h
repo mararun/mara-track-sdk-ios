@@ -2,29 +2,27 @@
 //  MaraTrackSDK.h
 //  MaraTrackSDK
 //
-//  Created by pk on 2017/8/2.
-//  Copyright © 2017年 com.maramara. All rights reserved.
+//  Created by Yalin on 2017/12/15.
+//  Copyright © 2017年 congtou. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 
-#import <MaraTrackSDK/MaraTrackManager.h>
-#import <MaraTrackSDK/MaraTrackerConfig.h>
-#import <MaraTrackSDK/MaraUserLocation.h>
-#import <MaraTrackSDK/TrackTask.h>
-#import <MaraTrackSDK/MaraConstants.h>
+//! Project version number for MaraTrackSDK.
+FOUNDATION_EXPORT double trackerVersionNumber;
+
+//! Project version string for MaraTrackSDK.
+FOUNDATION_EXPORT const unsigned char trackerVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <MaraTrackSDK/PublicHeader.h>
 #import <MaraTrackSDK/MaraLocationManager.h>
-
-
-@interface MaraTrackSDK : NSObject
-
-+ (MaraTrackSDK*)shared;
-
-/**
- 向马拉马拉注册第三方应用
-
- @param appKey Mara分配的唯一标识
- @param block 回调
- */
-- (void)registerApp:(NSString *)appKey block: (void (^)(SDKRegisterResult))block;
-
-@end
+#import <MaraTrackSDK/MaraTrackerConfig.h>
+#import <MaraTrackSDK/MaraConstants.h>
+#import <MaraTrackSDK/MaraTrackAuth.h>
+#import <MaraTrackSDK/TrackTask.h>
+#import <MaraTrackSDK/MaraUserLocation.h>
+#import <MaraTrackSDK/MaraTrackError.h>
+#import <MaraTrackSDK/MaraTrackManager_Ext.h>
+#import <MaraTrackSDK/FileUploader.h>
+#import <MaraTrackSDK/MaraTrackerRecordUploadManager.h>
+#import <MaraTrackSDK/MaraTrackManager.h>

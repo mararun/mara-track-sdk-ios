@@ -25,6 +25,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSHealthShareUsageDescription</key>
+	<string>马拉马拉使用健康应用的心率数据</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>使用定位服务来追踪你的跑步</string>
 	<key>NSLocationUsageDescription</key>

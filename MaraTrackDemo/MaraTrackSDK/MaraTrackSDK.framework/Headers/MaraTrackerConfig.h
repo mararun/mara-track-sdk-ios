@@ -58,6 +58,11 @@
 @property (nonatomic) BOOL enableExceptionalPointFilter;
 
 /**
+ 平均步长 默认1m
+ */
+@property (nonatomic) double stepLength;
+
+/**
  Debug信息开关, 默认开启
  */
 @property (nonatomic) BOOL debug;

@@ -19,13 +19,13 @@ typedef void (^UpdateLocationCompletionBlock)(CLLocation *location, NSError *err
 
 @interface MaraLocationManager : NSObject
 
-///**
-// 初始化并返回值
-//
-// @param completionBlock 数据回调block
-// @return MaraLocationManager实例
-// */
-//- (id)initWithCompletionBlock:(UpdateLocationCompletionBlock)completionBlock;
+/**
+ 初始化并返回值
+
+ @param completionBlock 数据回调block
+ @return MaraLocationManager实例
+ */
+- (id)initWithCompletionBlock:(UpdateLocationCompletionBlock)completionBlock;
 
 /**
  *  @brief 开始连续定位。
